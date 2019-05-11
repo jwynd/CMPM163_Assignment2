@@ -57,7 +57,7 @@ Shader "Custom/Outline"
                 float ndotv = 1.0 - dot(i.normal, i.viewDir);
                 if(ndotv < _Cutoff) ndotv = 0;
                 ndotv *= _OutlineMod;
-                return float4(_OutlineColor.r * ndotv, _OutlineColor.g * ndotv, _OutlineColor.b * ndotv, 0);
+                return float4(_OutlineColor.r * ndotv, _OutlineColor.g * ndotv, _OutlineColor.b * ndotv, 1);
             }
 
             ENDCG
