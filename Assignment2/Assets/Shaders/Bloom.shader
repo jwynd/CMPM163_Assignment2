@@ -11,6 +11,7 @@
     SubShader
     {
         //Bright pass
+        ZTest Always
         Pass
         {
             CGPROGRAM

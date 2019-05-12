@@ -16,8 +16,17 @@ Shader "Custom/Outline"
         Tags { "RenderType"="Opaque" }
         LOD 100
 
+        
+
         Pass
         {
+            stencil
+            {
+                Ref 0
+                Comp Always
+                Fail Replace
+                Pass Replace
+            }
             CGPROGRAM
 
             #pragma vertex vert
