@@ -6,6 +6,8 @@ public class CreatePerlinNoise : MonoBehaviour
 {
     [SerializeField] private int pixWidth;
     [SerializeField] private int pixHeight;
+    [SerializeField] private float minScale = 3.0f;
+    [SerializeField] private float maxScale = 8.0f;
     private float xOrg;
     private float yOrg;
     private float scale;
@@ -20,13 +22,21 @@ public class CreatePerlinNoise : MonoBehaviour
         print(mat);
         xOrg = Random.Range(0.0f, 100.0f);
         yOrg = Random.Range(0.0f, 100.0f);
-        scale = Random.Range(3.0f, 8.0f);
+        scale = Random.Range(minScale, maxScale);
         noiseTex = new Texture2D(pixWidth, pixHeight);
         pix = new Color[noiseTex.width * noiseTex.height];
         CalcNoise();
         mat.SetTexture("_HeightMapTex", noiseTex);
     }
-    
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.N)){
+            xOrg = Random.Range(0.0f, 100.0f);
+            yOrg = Random.Range(0.0f, 100.0f);
+            scale = Random.Range(minScale, maxScale);
+            CalcNoise();
+            mat.SetTexture("_HeightMapTex", noiseTex);
+        }
+    }
 
     private void CalcNoise()
     {
